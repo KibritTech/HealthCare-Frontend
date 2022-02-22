@@ -1,0 +1,120 @@
+@import './assets/styles/variables';
+
+%google-play-badge{
+  color: transparent !important;
+  border: 0px transparent !important;
+  background-color: transparent !important;
+  background-image: url('./assets/images/google-play-badge.svg') !important;
+}
+
+%app-store{
+  color: transparent !important;
+  border: 0px transparent !important;
+  background-color: transparent !important;
+  background-image: url('./assets/images/app-store-badge.svg') !important;
+}
+
+.google-play{
+  width: 174px;
+  height: 52px !important;
+  @extend %google-play-badge;
+
+  &:hover, &:focus{
+      @extend %google-play-badge;
+  }
+}
+.app-store {
+  width: 174px;
+  height: 57px !important;
+  @extend %app-store;
+
+  &:hover, &:focus{
+      @extend %app-store;
+  }
+}
+
+.ant-layout-content, .ant-layout {
+  background: $white !important;
+}
+.ant-btn-background-ghost.ant-btn-primary {
+  border: 2px solid;
+  border-radius: $border-radius-md;
+  height: auto;
+  font-size: 18px;
+  line-height: 21px;
+}
+.ant-typography {
+  margin-bottom: 0 !important;
+}
+.pink-button{
+  background: $blue !important;
+  border: 2px solid $blue !important;
+  color: $white !important;
+  padding: 11px 80px !important;
+  font-size: 18px !important;
+  height: auto !important;
+  border-radius: $border-radius-md !important;
+  line-height: 21px !important;
+}
+.ant-typography span, .ant-typography a {
+  color: $blue !important;
+  font-family: 'Roboto-Medium';
+}
+.help-pages{
+  padding: 40px 300px 100px;
+  text-align: left;
+  width: 100%;
+  & > .ant-space-item:first-child{
+    margin-bottom: 41px !important;
+  }
+  .help-pages-text{
+      margin-bottom: 60px;
+      div{
+          font-size: 18px;
+          margin-bottom: 25px !important;        
+      }
+  }
+  .help-pages-info{
+      margin-top: 55px;
+      & a h4{
+          margin-top: 27px;
+          color: $blue;
+      }
+  }
+}
+@media (max-width: 760px) {
+  .help-pages{
+      padding: 20px 20px;
+  }
+}
+.ant-input-affix-wrapper, textarea, form input{
+  border: 1px solid $light-grey;
+  border-radius: $border-radius-sm;
+  box-shadow:none !important;
+  &:hover, &:focus{
+      border-color: $blue !important;
+      box-shadow:none !important;
+  }
+  .ant-input-prefix{
+      color: $blue;
+      margin-right: 16px;            
+  }
+  input::placeholder{
+      color: $grey;
+  }
+}
+
+// Removing input background colour for Chrome autocomplete
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+@media (max-width: 760px) {
+  .sm-d-none{
+    display: none;
+  }
+}

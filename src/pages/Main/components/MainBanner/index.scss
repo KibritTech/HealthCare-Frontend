@@ -1,0 +1,37 @@
+@import '../../../../assets/styles/variables';
+
+.main-banner {
+    background-image: url('../../../../assets/images/healthcare-banner.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 600px;
+    text-align: left;
+    padding: 180px 103px;
+    .ant-typography{
+        color: $white;        
+    }
+    h1.ant-typography{
+        margin-bottom: 25px !important;
+    }
+    span.ant-typography {
+        letter-spacing: -0.02em;
+        margin-top: 90px;
+        display: block;
+    }
+    .ant-row{
+        margin-top: 25px;
+    }
+}
+
+@media (max-width: 760px) {
+    .main-banner {
+        padding: 186px 20px;
+        span.ant-typography {
+            margin-top: 0px;
+        }
+        .ant-row{
+            margin-top: 25px;
+            margin-bottom: 50px;
+        }
+    }  
+}

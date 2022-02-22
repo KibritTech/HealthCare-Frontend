@@ -1,0 +1,106 @@
+@import '../../assets/styles/variables';
+
+.footer{
+    .blue-zone{
+        background-color: $blue;
+        padding: 60px 190px;
+        text-align: left;
+        .footer-buttons.ant-col:not(:first-child){
+            text-align: right;
+            & > span{
+                margin-left: 13px;
+            }
+            &:not(:nth-child(2)){
+                text-align: right;
+            }            
+        }
+        .ant-typography {
+            color: $white;
+            font-size: 16px;
+            line-height: 24px;
+        }
+        h5.ant-typography {
+            letter-spacing: 0.085em;
+            margin-bottom: 21px !important;
+        }
+        span.ant-typography {
+            letter-spacing: 0.185em;
+            margin-bottom: 15px !important;
+        }
+        .line{
+            border: 1px solid $white;
+            background-color: $white;
+            width: 140px;
+            margin-top: 25px;
+        }
+        .ant-btn-background-ghost.ant-btn-primary{
+            color: $white;
+            border-color: $white;
+            padding: 9px 23px;
+            font-family: 'Roboto-Medium';
+            font-size: 16px;
+            border-radius: 0;
+    
+            &:hover, &:focus{
+                color: $white;
+                border-color: $white;
+            }
+        }
+        .google-play{
+            margin-top: 66px;
+            margin-bottom: 21px;
+        }
+        img{
+            margin-top: 75px;
+        }
+        .ant-list-items {
+            display: inline-block;
+            .ant-list-item{
+                border-bottom: 0;
+                span.ant-typography {
+                    letter-spacing: 0;
+            }
+        }
+        }
+        
+    }   
+    .black-zone{
+        background-color: $black;
+        padding: 29px 190px;
+        text-align: left;
+        .ant-col:not(:first-child){
+            text-align: right;
+        }
+        .ant-typography {
+            color: #D9DBE1;
+            font-size: 14px;
+            line-height: 24px;
+        }
+        .anticon{
+            color: $white;
+            &.anticon-instagram {
+                margin-right: 16px;
+                font-size: 15px;
+            }
+        }
+    }
+}
+
+@media (max-width: 760px) {
+    .footer{
+        .purple-zone{
+            padding: 125px 20px 60px;            
+        } 
+        .ant-col{
+            &:first-child{
+                margin-bottom: 20px !important; 
+            }
+        }
+        .footer-buttons{
+            margin-left: 50px;
+        }
+    }
+    .black-zone{
+        padding: 29px 20px !important;
+    }
+}
