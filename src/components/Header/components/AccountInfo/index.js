@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography, Space, Avatar, Menu, Dropdown, Button, Row, Col } from 'antd';
 import { Link } from "react-router-dom";
-import { DownOutlined, BellOutlined, BellFilled, GlobalOutlined } from '@ant-design/icons';
+import { DownOutlined, BellOutlined, BellFilled } from '@ant-design/icons';
 
 const { Title, Text } = Typography;
 
@@ -9,7 +9,7 @@ const menu = (
     <Menu className="account-dropdown">
       <Menu.Item key="0">
         <Space direction="horizontal" className="account-info">
-          <Avatar size="large" src=''/>
+          <Avatar size="large"/>
           <Space direction="vertical" align="start">
               <Title level={5}>Leyla Mammadova</Title>
               <Text>leila.mammadova@gmail.com</Text>                

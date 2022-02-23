@@ -11,7 +11,6 @@ const { Option } = Select;
 const AdminPage = () => {
     localStorage.setItem('user', 'admin');
     const userName=Auth();
-    console.log(userName);
 
     return (
             <div className="user-page">

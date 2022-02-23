@@ -11,7 +11,6 @@ const { Option } = Select;
 const UserPage = () => {
     localStorage.setItem('user', 'patient');
     const userName=Auth();
-    console.log(userName);
     
     return (
             <div className="user-page">

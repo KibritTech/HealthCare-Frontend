@@ -19,7 +19,7 @@ const Header = () => {
             setShowClinics(false)
         }
 
-        if(location.pathname === '/user'){
+        if(location.pathname === '/user' || location.pathname === '/admin'){
             setShowAuth(false)
         } else {
             setShowAuth(true)
