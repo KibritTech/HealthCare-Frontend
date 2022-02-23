@@ -1,0 +1,14 @@
+@import '../../assets/styles/variables';
+
+.user-page{
+    padding: 20px 103px;
+    text-align: center;
+    .ant-select{
+        width: 300px !important;
+        .ant-select-selector{
+            height: 47px !important;
+            padding-top: 8px !important;
+            text-align: left;
+        }        
+    }
+}
