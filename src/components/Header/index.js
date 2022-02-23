@@ -13,7 +13,7 @@ const Header = () => {
     const location = useLocation();
 
     useEffect(() => {
-        if(location.pathname === '/clinics'){
+        if(location.pathname === '/'){
             setShowClinics(true)
         } else {
             setShowClinics(false)
@@ -31,12 +31,14 @@ const Header = () => {
             <Row align="middle" justify="center">
                 <Col md={12} className="header-logo">     
 
-                    {showClinics ?
-                        null 
-                        :
-                        <Link to='/clinics'>
+                    {showClinics ?                       
+                        <Link to='/admin'>
                             <Title level={5}>For Clinics</Title>
                         </Link>  
+                        :
+                        <Link to='/'>
+                            <Title level={5}>Logo</Title> 
+                        </Link>                                                 
                     }                     
                 </Col>
 

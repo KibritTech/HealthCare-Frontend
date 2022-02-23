@@ -121,7 +121,7 @@ const SignUp = () => {
         </Space>
 
         <Form.Item >
-            <Button className="pink-button" htmlType="submit">
+            <Button className="blue-button" htmlType="submit">
                 SIGN UP
             </Button>
         </Form.Item>

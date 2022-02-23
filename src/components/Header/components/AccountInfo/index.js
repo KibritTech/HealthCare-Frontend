@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography, Space, Avatar, Menu, Dropdown, Button, Row, Col } from 'antd';
 import { Link } from "react-router-dom";
-import { DownOutlined, BellOutlined, BellFilled } from '@ant-design/icons';
+import { DownOutlined, BellOutlined, UserOutlined } from '@ant-design/icons';
 
 const { Title, Text } = Typography;
 
@@ -18,8 +18,8 @@ const menu = (
       </Menu.Item>
 
       <Menu.Item key="1">
-        <BellFilled/>
-        <Link to="">Notifications</Link>
+        <UserOutlined />
+        <Link to="">My Profile</Link>
       </Menu.Item>
 
       <Menu.Item key="2">
@@ -44,18 +44,7 @@ const notification = (
     <Menu.Item key="1">
       <Row align="middle">
         <Col span={12}>
-          <Text>Welcome! You logged in Q-less dashboard. Please fulfill your profile for further activities</Text>
-        </Col>
-        <Col span={12}>
-          <Text>2 min ago</Text>   
-        </Col>
-      </Row>    
-    </Menu.Item>
-
-    <Menu.Item key="2">
-      <Row align="middle">
-        <Col span={12}>
-          <Text>Welcome! You logged in Q-less dashboard. Please fulfill your profile for further activities</Text>
+          <Text>Welcome!</Text>
         </Col>
         <Col span={12}>
           <Text>2 min ago</Text>   
@@ -70,7 +59,7 @@ const AccountInfo = () => {
         <Space direction="horizontal" className="account-info">
             <Avatar size="large" src=''/>
             <Space direction="vertical" align="start">
-                <Title level={5}>Patient</Title>
+                <Title level={5}>User</Title>
                 <Dropdown overlay={menu} trigger={['click']} placement="bottomRight">
                     <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
                     Leyla Mammadova <DownOutlined />

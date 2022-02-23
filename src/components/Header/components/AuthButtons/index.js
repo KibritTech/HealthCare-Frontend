@@ -14,7 +14,7 @@ const AuthButtons = () => {
         </Link>
         
         <Link to='/signup'>
-            <Button className="pink-button">
+            <Button className="blue-button">
                 Sign up
             </Button>
         </Link>      

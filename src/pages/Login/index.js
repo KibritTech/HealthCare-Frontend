@@ -1,5 +1,6 @@
 import React from "react";
 import {Typography, Form, Input, Button} from 'antd';
+import {Link } from "react-router-dom";
 import FormItem from "antd/lib/form/FormItem";
 import './index.scss';
 
@@ -51,9 +52,12 @@ const Login = () => {
         </Form.Item>
 
         <Form.Item >
-            <Button className="pink-button" htmlType="submit">
-                Login
-            </Button>
+            <Link to='/user'>
+                <Button className="blue-button" htmlType="submit">
+                    Login
+                </Button>            
+            </Link>
+            
         </Form.Item>
     </Form>
     </>

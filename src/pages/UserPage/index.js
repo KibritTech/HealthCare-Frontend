@@ -1,57 +1,32 @@
-import React from "react";
-import { Typography, Select, Space, Button } from 'antd';
+import React,{useState } from "react";
 import DoctorCard from "./components/DoctorCard";
+import SelectOptions from "../../components/SelectOptions";
 import Auth from "../../services/auth";
 import './index.scss';
 
-const { Title, Text } = Typography;
-const { Option } = Select;
-
-
 const UserPage = () => {
+    const [filteredOptions, setFilteredOptions] = useState([]);
+
     localStorage.setItem('user', 'patient');
     const userName=Auth();
-    
+
+    const getFilteredData = (data) => {
+        setFilteredOptions(data);
+    }
+
     return (
             <div className="user-page">
-                <Space direction="horizontal" align="middle">
-                    <Select
-                        showSearch
-                        style={{ width: 200 }}
-                        placeholder="Categories"
-                        optionFilterProp="children"
-                        filterOption={(input, option) =>
-                        option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                        }
-                        filterSort={(optionA, optionB) =>
-                        optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
-                        }
-                    >
-                        <Option value="1">Pediatr</Option>
-                        <Option value="2">Surgeon</Option>
-                    </Select>
+               <SelectOptions getFilteredData = {getFilteredData}/>
 
-                    <Select
-                        showSearch
-                        style={{ width: 200 }}
-                        placeholder="Doctors"
-                        optionFilterProp="children"
-                        filterOption={(input, option) =>
-                        option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                        }
-                        filterSort={(optionA, optionB) =>
-                        optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
-                        }
-                    >
-                        <Option value="1">Leyla Mammadova</Option>
-                        <Option value="2">Bill Gates</Option>
-                        <Option value="3">Steve Jobs</Option>
-                    </Select>
-
-                    <Button className="pink-button">Search</Button>
-                </Space>
-                
-                <DoctorCard/>
+                {     
+                    filteredOptions.map((item) => (
+                        <DoctorCard key = {item.id}
+                            name={item.first_name} 
+                            surname={item.surname} 
+                            location={item.location} 
+                            categories={item.field.title}/>
+                    ))                   
+                }
             
             </div>
     )

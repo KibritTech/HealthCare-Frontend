@@ -21,7 +21,6 @@ const AppRoutes = () => {
                     </Route> 
 
                     <Route element={<AuthLayout/>}>
-                        <Route path='/' element={'hello'} exact/>
                         <Route path='/signup' element={<SignUp/>}/>
                         <Route path='/login' element={<Login/>}/>
                     </Route>                    

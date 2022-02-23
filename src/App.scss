@@ -46,7 +46,7 @@
 .ant-typography {
   margin-bottom: 0 !important;
 }
-.pink-button{
+.blue-button{
   background: $blue !important;
   border: 2px solid $blue !important;
   color: $white !important;
@@ -55,10 +55,6 @@
   height: auto !important;
   border-radius: $border-radius-md !important;
   line-height: 21px !important;
-}
-.ant-typography span, .ant-typography a {
-  color: $blue !important;
-  font-family: 'Roboto-Medium';
 }
 .help-pages{
   padding: 40px 300px 100px;
