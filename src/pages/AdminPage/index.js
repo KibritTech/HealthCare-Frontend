@@ -1,17 +1,25 @@
-import React from "react";
+import React, {useState} from "react";
 import Schedule from "./components/Schedule";
-import Auth from "../../services/auth";
 import SelectOptions from "../../components/SelectOptions";
 import './index.scss';
 
 const AdminPage = () => {
-    localStorage.setItem('user', 'admin');
-    const userName=Auth();
+    const [filteredOptions, setFilteredOptions] = useState([]);
+
+    const getFilteredData =  (data) => {
+         setFilteredOptions(data);        
+    }   
 
     return (
             <div className="user-page">
-                <SelectOptions/>                
-                <Schedule/>            
+                <SelectOptions getFilteredData = {getFilteredData}/>
+                {
+                    filteredOptions.length>0?
+                    <Schedule filteredOptions={filteredOptions}/>   
+                    :
+                    null
+                }           
+                      
             </div>
     )
 }

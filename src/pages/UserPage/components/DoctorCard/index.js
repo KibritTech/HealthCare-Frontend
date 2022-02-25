@@ -1,19 +1,60 @@
-import React from "react";
-import { Typography, Space, Row, Col, DatePicker, Rate, Button } from 'antd';
+import React, {useState, useEffect } from "react";
+import { Typography, Space, Row, Col, DatePicker, Rate, Button, message } from 'antd';
+import moment from 'moment';
+import axios from 'axios';  
 import CompanyLogo from '../../../../assets/images/company-logo.png';
+import { patientsApi, appointmentsApi } from "../../../../services/api";
 import './index.scss';
 
 const { Title, Text } = Typography;
+const { RangePicker } = DatePicker;
 
-function onChange(date, dateString) {
-    console.log(date, dateString);
-}
+const DoctorCard = ({id, name, surname, location, categories}) => {
+    const [date, setDate] = useState('');
+    const [patient, setPatient] = useState();
 
-function onOk(value) {
-    console.log('onOk: ', value);
-}
+    function onChange(date, dateString) {
+        setDate(dateString);
+    }
+    
+    useEffect(async() => {        
+        await axios.get(patientsApi)
+      .then(res => {
+        const patientArray = res.data;
+        setPatient(patientArray[3].id)
+      })        
+    }, []);
 
-const DoctorCard = ({name, surname, location, categories}) => {
+    const createAppointment = async () => {
+        await  axios.post(appointmentsApi, {patient: patient, doctor: id, date: date})
+        .then(res => {
+            console.log(res);
+            message.success('You have successfully made an appointment!');
+        }) 
+        .catch(error=>{
+            message.error('Please, select date and time!');
+        })
+    }
+
+    function range(start, end) {
+        const result = [];
+        for (let i = start; i < end; i++) {
+          result.push(i);
+        }
+        return result;
+      }
+
+    function disabledDate(current) {
+        return current && current <= moment().startOf('day');
+      }
+      
+      function disabledDateTime(current) {
+        return {
+          disabledHours: () => range(0, 24).splice(4, 20),
+          disabledMinutes: () => range(30, 60)
+        };
+      }
+
     return (
             <div className="doctor-card">
                <Row align="middle">
@@ -30,7 +71,13 @@ const DoctorCard = ({name, surname, location, categories}) => {
 
                     <Col span={12} className="time-picker">
                         <Space direction="horizontal">
-                            <DatePicker showTime onChange={onChange} onOk={onOk} format="YYYY-MM-DD HH:mm" />
+                            <DatePicker 
+                                showTime 
+                                onChange={onChange} 
+                                format="YYYY-MM-DD HH:mm"
+                                disabledDate={disabledDate}
+                                // disabledTime={disabledDateTime}
+                            />
                         </Space>                       
                     </Col>
                 </Row>   
@@ -50,7 +97,7 @@ const DoctorCard = ({name, surname, location, categories}) => {
 
                     <Col span={12}>
                         <Space direction="horizontal"> 
-                            <Button className="blue-button">Confirm</Button>                 
+                            <Button className="blue-button" onClick={createAppointment}>Confirm</Button>                 
                         </Space>
                     </Col>
                 </Row>            

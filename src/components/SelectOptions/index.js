@@ -1,6 +1,7 @@
 import React, {useState, useEffect } from "react";
 import { Select, Space, Button } from 'antd';
 import axios from 'axios';
+import { doctorsApi } from "../../services/api";
 
 const { Option } = Select;
 
@@ -10,17 +11,18 @@ const SelectOptions = ({getFilteredData}) => {
     const [doctorInfoOption, setDoctorInfoOption] = useState('');
     const [filteredInfo, setFilteredInfo] = useState([]);
 
-    useEffect(() => {        
-        axios.get(`https://digcare.herokuapp.com/api/v1.0/doctors/`)
+    useEffect( async () => {        
+       await axios.get(doctorsApi)
       .then(res => {
         const doctorsArray = res.data;
         setDoctorsList(doctorsArray);
         getFilteredData(doctorsArray);
-      })        
+        setFilteredInfo(doctorsArray)
+      }).catch(error => console.log(error))        
     }, []);
 
     const sendData = () => {
-        let filteredData = doctorsList.filter(item => (item.field.title === doctorCategoriesOption && item.first_name === doctorInfoOption));
+        let filteredData = doctorsList.filter(item => ((item.field.title === doctorCategoriesOption && item.first_name === doctorInfoOption))||((item.field.title === doctorCategoriesOption || item.first_name === doctorInfoOption)));
         getFilteredData(filteredData)
     }
 

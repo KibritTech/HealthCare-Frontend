@@ -1,14 +1,11 @@
 import React,{useState } from "react";
+import { Spin } from 'antd';
 import DoctorCard from "./components/DoctorCard";
 import SelectOptions from "../../components/SelectOptions";
-import Auth from "../../services/auth";
 import './index.scss';
 
 const UserPage = () => {
     const [filteredOptions, setFilteredOptions] = useState([]);
-
-    localStorage.setItem('user', 'patient');
-    const userName=Auth();
 
     const getFilteredData = (data) => {
         setFilteredOptions(data);
@@ -19,13 +16,17 @@ const UserPage = () => {
                <SelectOptions getFilteredData = {getFilteredData}/>
 
                 {     
-                    filteredOptions.map((item) => (
-                        <DoctorCard key = {item.id}
-                            name={item.first_name} 
-                            surname={item.surname} 
-                            location={item.location} 
-                            categories={item.field.title}/>
-                    ))                   
+                    filteredOptions.length > 0 ?
+                        filteredOptions.map((item) => (
+                            <DoctorCard key = {item.id}
+                                id = {item.id}
+                                name={item.first_name} 
+                                surname={item.surname} 
+                                location={item.location} 
+                                categories={item.field.title}/>
+                        ))     
+                        :
+                        <Spin size="large" />                    
                 }
             
             </div>
